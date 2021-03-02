@@ -1,0 +1,19 @@
+package com.test.it.interviewcoding;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest {
+	
+	@Test
+    public void testMethod() {
+		Combine cb = new Combine();
+		cb.combineMethod();
+    }
+
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="user" class="com.gec.main.User" >
+		<constructor-arg index="0">
+			<value>andy</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>123</value>
+		</constructor-arg>
+	</bean>
+	<bean id="util" class="com.gec.main.Util">
+		<property name="address" ref="list"></property>
+	</bean>
+	<util:list id="list" list-class="java.util.ArrayList">
+		<value>广州</value>
+		<value>深圳</value>
+		<value>北京</value>
+		<value>上海</value>
+	</util:list>
+
+</beans>
+
+<!-- {依赖注入}
+			取决与这一个方法的命名:
+			set + UserService( UserService xxx );
+			<property name="password">
+			<value>123</value>
+		</property>
+		<property name="age">
+			<value>100</value>
+		</property>
+		<property name="weight">
+			<value>200</value>
+		</property>
+		 -->
+

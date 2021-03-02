@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+	 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+<configuration>
+	
+	<!-- 
+		{ps} 
+		以后如果有什么插件要用的, 有什么 mybatis 的全局设定要做的, 
+		要配置 session 的二级缓存等等 .. 就在这里配置 ..
+		其它, 全部在 spring-mybatis.xml 中设置。
+	 -->
+	 
+	
+</configuration>

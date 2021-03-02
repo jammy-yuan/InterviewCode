@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        
+       <context:property-placeholder location="classpath:mysql.properties"/>
+       <!-- ds.setDriverClassName( xx ); -->
+       <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+       		<property name="DriverClassName" value="${jdbc.driverName}"/>
+       		<property name="url" value="${jdbc.url}"/>
+       		<property name="Username" value="${jdbc.userName}"/>
+       		<property name="password" value="${jdbc.password}"/>
+       </bean>
+       <!-- 构造器注入 -->
+       <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+       		<constructor-arg type="javax.sql.DataSource">
+       			<ref bean="dataSource"/>
+       		</constructor-arg>
+       </bean>
+       <!-- setter注入事务管理器 -->
+       <bean id="txManager"
+       		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+       		p:dataSource-ref="dataSource"/>
+       	<!-- 事物模板类
+       		txTemp.setTransactionManager( 事务管理器 );
+       	 -->
+       	 <!-- 配置一个事务增强对象 -->
+       	<bean id="transTemplate"
+       		class="org.springframework.transaction.support.TransactionTemplate"
+       		p:transactionManager-ref="txManager"/>
+       		<tx:advice id="txAdvice" transaction-manager="txManager">
+       			<tx:attributes>
+       				<tx:method name="*" propagation="REQUIRED"/>
+       			</tx:attributes>
+       		</tx:advice>
+       		<aop:config>
+       			<!-- 配置一个切点 -->
+       			<aop:pointcut expression="execution(* com.gec.service.*.*(..))" id="txPointcut"/>
+       			<!-- 配置一个切面 -->
+       			<aop:advisor advice-ref="txAdvice" 
+       				id="txAdvisor"
+       				pointcut-ref="txPointcut"/>
+       		</aop:config>
+       		<context:component-scan base-package="com.gec.service"/>
+       		<context:component-scan base-package="com.gec.dao"/>
+       		
+       		
+</beans>
+
+

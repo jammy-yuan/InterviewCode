@@ -1,0 +1,17 @@
+package com.test.it.interviewcoding;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+/**
+ * authur : jammy.yuan
+ *
+ */
+public class App 
+{
+    public static void main( String[] args ) {
+    	Combine.combineMethod();
+    }
+}

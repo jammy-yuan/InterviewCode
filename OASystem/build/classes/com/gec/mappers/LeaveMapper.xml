@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gec.dao.LeaveMapper">
+	<resultMap type="com.gec.domain.Leave" id="fullLeave">
+		<id column="procInsId" property="procInsId" />
+	    <result column="procDefId" property="procDefId" />
+	    <result column="taskId" property="taskId" />
+	    <result column="startDate" property="startDate" />
+	    <result column="endDate" property="endDate" />
+	    <result column="days" property="days" />
+	    <result column="reason" property="reason" />
+	    <result column="createTime" property="createTime" />
+	    <result column="finishTime" property="finishTime" />
+	    <result column="initcator"  property="initcator" />
+	    <result column="assignee" property="assignee" />
+	    <result column="status" property="status" />
+	</resultMap>
+	
+	<select id="getLeave" resultMap="fullLeave">
+		select * from t_leave where 
+		<if test="initiator!=null">
+			initiator=#{initiator}
+		</if>
+		<if test="assignee!=null">
+			assignee=#{assignee}
+		</if>
+	</select>
+	
+	<!-- 
+		int addLeave( Leave leave );
+	 -->
+	<insert id="addLeave">
+		insert into t_leave(
+			procInstId, procDefId, startDate,
+			endDate, createTime, initiator,
+			days )
+		values(
+			#{procInstId}, #{procDefId}, #{startDate},
+			#{endDate}, #{createTime}, #{initiator},
+			#{days}
+		)
+	</insert>
+	
+	<update id="updateAssignee">
+		update t_leave set assignee=#{assignee},
+			taskId=	#{taskId},status=#{status} 
+		where procDefId=#{procDefId},procInsId=#{procInsId}
+	</update>
+	
+	
+	
+	<update id="saveLeaveStatus" parameterType="com.gec.domain.Leave">
+		update t_leave set status=#{status},finishtime=#{finishtime} where procInsId=#{procInsId}
+	</update>
+</mapper>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- {ps} 配置一个缓存管理器 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
+	</bean>
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="realm" ref="customerRealm" />
+		<!-- {ps} 配置 sessionManager, 提供 "会话" 管理 <property name="sessionManager" 
+			ref="sessionManager" /> -->
+	</bean>
+
+	<bean id="customerRealm" class="com.gec.realms.CustomerRealm" />
+	
+	<!-- 
+		配置自定义 shiro 的 filter 	
+		<bean id="BeanID" class="自定义的过滤器全类名" />
+	 -->
+	<bean id="mappingFilter" class="com.gec.filters.MappingFilter" />
+
+	<!-- 
+		这一个是 shiro 真正的过滤器 在系统中主要靠它来完成: 用户认证, 用户授权/认证的工作。 注意: BeanID 必须与 web.xml 
+		中的过滤器名称一样。 
+	-->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- {ps} 绑定安全管理器, 过滤器的运行依赖 "安全管理器" -->
+		<property name="securityManager" ref="securityManager" />
+		<!-- {ps} 如果用户没有登录, 它会重定向到该地址 -->
+		<property name="loginUrl" value="/User/showLogin"></property>
+		<!-- {ps} 登录成功后要跳转的链接 -->
+		<property name="successUrl" value="/User/index" />
+		<!-- {ps} 用户访问未对其授权的资源时, 所显示的链接 -->
+		<property name="unauthorizedUrl"
+			value="/static/unauthorized.jsp" />
+			
+		<!-- {ps} 过滤器链 -->
+		<property name="filterChainDefinitions">
+			<value>
+				<!-- {ps} 用户首次登录必须修改密码 -->
+				<!-- 
+					anon: 放行过滤器
+					authc: 只做身份认证(过滤器)
+				 -->
+				/User/login = anon
+				/User/showLogin = anon
+				/js/** = anon
+				/** = authc
+				/** = map_perms[ /User/showLogin, /User/index,/index,/login,/index2, /User/login, /static, /User/clearCache ,/Work]
+			</value>
+		</property>
+		
+		<!-- 
+			{ps} 在这里可以注册我们自定义的过滤器
+		 -->
+		<property name="filters">
+			<map>
+				<entry key="map_perms" value-ref="mappingFilter" />
+			</map>
+		</property>
+	</bean>
+</beans>

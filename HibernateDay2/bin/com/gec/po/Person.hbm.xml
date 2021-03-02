@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping 
+	SYSTEM "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+	
+<!-- 
+	{ps}设置 Person 与 Person 表的映射关系。。
+	这是 Person 类的属性:
+		private Integer id;      //{ps} 字段名: id
+		private String name;     //{ps} 字段名: name
+		private Integer age;     //{ps} 字段名: age
+		private IdCard idCard;   //{ps} 关联对象
+ -->
+<hibernate-mapping>
+	<class name="com.gec.po.Person" table="t_person">
+		<id name="id" column="id">
+			<!-- {ps} 主键生成器 -->
+			<generator class="native" ></generator>
+		</id>
+		<property name="name" type="java.lang.String" column="name" />
+		<property name="age" type="java.lang.Integer" column="age" />
+		
+		<!-- {ps} 关联对象 IdCard 的设置。 
+			在 Person 这一端专门设置了一个外键用来关联 idCard 对象
+			unique="true": 唯一, 作用相当变成 1 对 1
+			设置格式 : 
+			<many-to-one 
+				name="关联对方的对象名(属性名)"
+				column="本表关联对方表的外键列名"
+				class="对方的全类名"
+				unique="true" >
+			{ps} 关联对象	
+			private IdCard idCard;
+		 -->
+		<many-to-one 
+			name="idCard"
+			column="card_id"
+			class="com.gec.po.IdCard"
+			unique="true" >
+		</many-to-one>
+
+	</class>
+</hibernate-mapping>

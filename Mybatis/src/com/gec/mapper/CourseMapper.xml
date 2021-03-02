@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gec.mapper.CourseMapper">
+	<select id="getCourseById" resultMap="csMapper">
+		select sc.stu_id,sc.crs_id,c.course_name,s.student_name from student_course sc 
+			left join course c 
+			on sc.crs_id=c.id 
+			left join student s
+			on s._id=sc.stu_id
+		where c.id=#{id}
+	</select>
+	<resultMap type="Course" id="csMapper">
+		<id column="crs_id" property="id"/>
+		<result column="course_name" property="courseName"/>
+		<!-- 封装List<Student>集合 -->
+		<collection property="students" column="stu_id" ofType="student">
+			<id column="stu_id" property="id"/>
+			<result column="student_name" property="name"/>
+		</collection>
+	</resultMap>
+</mapper>

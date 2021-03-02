@@ -1,0 +1,33 @@
+package com.test.it.interviewcoding;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+/**
+ * authur : jammy.yuan
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	System.out.print("请输入0~9的数字, 以空格隔开: ");
+    	Scanner in = new Scanner(System.in);
+    	String strings = in.nextLine();
+    	List<Integer> digits = new ArrayList<Integer>();
+    	Pattern pattern = Pattern.compile("[0-9]*");
+    	for(String str : strings.split(" ")) {
+    		if (pattern.matcher(str).matches() && Integer.parseInt(str) > 2 && Integer.parseInt(str) < 10) {
+    			digits.add(Integer.parseInt(str));
+    		}
+    	}
+    	in.close();
+    	List<String> arr = new ArrayList<String>();
+        A.findCombination(digits, 0, "", arr);
+        for (String sb : arr) {
+			System.out.print(sb + " ");
+		}
+    }
+}

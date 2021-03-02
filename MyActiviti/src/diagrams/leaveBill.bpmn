@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="LeaveBill" name="LeaveBillProcess" isExecutable="true">
+    <startEvent id="start_event" name="Start"></startEvent>
+    <userTask id="submitTask" name="提交申请" activiti:assignee="${initcator}" activiti:formKey="workflowAction_audit.action"></userTask>
+    <sequenceFlow id="sq_to_start" sourceRef="start_event" targetRef="submitTask"></sequenceFlow>
+    <userTask id="managerTask" name="部门经理审批" activiti:formKey="workflowAction_audit.action">
+      <extensionElements>
+        <activiti:taskListener event="create" class="com.workflow.listener.LeaveTaskHandler"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <userTask id="bossTask" name="老总审批" activiti:formKey="workflowAction_audit.action">
+      <extensionElements>
+        <activiti:taskListener event="create" class="com.workflow.listener.LeaveTaskHandler"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <endEvent id="end_event" name="End">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.workflow.listener.LeaveEndHandler"></activiti:executionListener>
+      </extensionElements>
+    </endEvent>
+    <exclusiveGateway id="exc_gway_man" name="检测经理意见" default="sq_man_no"></exclusiveGateway>
+    <sequenceFlow id="sq_man_after" sourceRef="managerTask" targetRef="exc_gway_man"></sequenceFlow>
+    <sequenceFlow id="sq_to_boss" name="给Boss审批" sourceRef="exc_gway_man" targetRef="bossTask">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${days>5}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sq_man_no" name="经理不同意" sourceRef="exc_gway_man" targetRef="submitTask"></sequenceFlow>
+    <exclusiveGateway id="exc_gway_boss" name="检测boss意见" default="sq_boss_no"></exclusiveGateway>
+    <sequenceFlow id="sq_boss_after" sourceRef="bossTask" targetRef="exc_gway_boss"></sequenceFlow>
+    <sequenceFlow id="sqb_to_end" name="最终结束" sourceRef="exc_gway_boss" targetRef="end_event">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${bossApp=='true'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sqd_to_end" name="直接结束" sourceRef="exc_gway_man" targetRef="end_event">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${days<=5 && deptApp=='true'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sq_boss_no" name="总经理不同意" sourceRef="exc_gway_boss" targetRef="submitTask"></sequenceFlow>
+    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway" default="sq_to_dept"></exclusiveGateway>
+    <sequenceFlow id="sq_cmt_after" sourceRef="submitTask" targetRef="exclusivegateway1"></sequenceFlow>
+    <sequenceFlow id="sq_to_dept" sourceRef="exclusivegateway1" targetRef="managerTask"></sequenceFlow>
+    <sequenceFlow id="sq_cancel" sourceRef="exclusivegateway1" targetRef="end_event">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${cancel=='true'}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_LeaveBill">
+    <bpmndi:BPMNPlane bpmnElement="LeaveBill" id="BPMNPlane_LeaveBill">
+      <bpmndi:BPMNShape bpmnElement="start_event" id="BPMNShape_start_event">
+        <omgdc:Bounds height="35.0" width="35.0" x="290.0" y="60.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="submitTask" id="BPMNShape_submitTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="255.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="managerTask" id="BPMNShape_managerTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="255.0" y="263.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="bossTask" id="BPMNShape_bossTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="255.0" y="400.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end_event" id="BPMNShape_end_event">
+        <omgdc:Bounds height="35.0" width="35.0" x="290.0" y="560.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exc_gway_man" id="BPMNShape_exc_gway_man">
+        <omgdc:Bounds height="40.0" width="40.0" x="287.0" y="340.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exc_gway_boss" id="BPMNShape_exc_gway_boss">
+        <omgdc:Bounds height="40.0" width="40.0" x="287.0" y="490.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40.0" width="40.0" x="287.0" y="200.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sq_to_start" id="BPMNEdge_sq_to_start">
+        <omgdi:waypoint x="307.0" y="95.0"></omgdi:waypoint>
+        <omgdi:waypoint x="307.0" y="120.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sq_man_after" id="BPMNEdge_sq_man_after">
+        <omgdi:waypoint x="307.0" y="318.0"></omgdi:waypoint>
+        <omgdi:waypoint x="307.0" y="340.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sq_to_boss" id="BPMNEdge_sq_to_boss">
+        <omgdi:waypoint x="307.0" y="380.0"></omgdi:waypoint>
+        <omgdi:waypoint x="307.0" y="400.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="48.0" width="61.0" x="237.0" y="379.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sq_man_no" id="BPMNEdge_sq_man_no">
+        <omgdi:waypoint x="287.0" y="360.0"></omgdi:waypoint>
+        <omgdi:waypoint x="178.0" y="359.0"></omgdi:waypoint>
+        <omgdi:waypoint x="178.0" y="261.0"></omgdi:waypoint>
+        <omgdi:waypoint x="178.0" y="147.0"></omgdi:waypoint>
+        <omgdi:waypoint x="255.0" y="147.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="48.0" width="60.0" x="141.0" y="242.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sq_boss_after" id="BPMNEdge_sq_boss_after">
+        <omgdi:waypoint x="307.0" y="455.0"></omgdi:waypoint>
+        <omgdi:waypoint x="307.0" y="490.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sqb_to_end" id="BPMNEdge_sqb_to_end">
+        <omgdi:waypoint x="307.0" y="530.0"></omgdi:waypoint>
+        <omgdi:waypoint x="307.0" y="560.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="48.0" width="48.0" x="324.0" y="529.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sqd_to_end" id="BPMNEdge_sqd_to_end">
+        <omgdi:waypoint x="327.0" y="360.0"></omgdi:waypoint>
+        <omgdi:waypoint x="416.0" y="359.0"></omgdi:waypoint>
+        <omgdi:waypoint x="416.0" y="577.0"></omgdi:waypoint>
+        <omgdi:waypoint x="325.0" y="577.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="16.0" width="64.0" x="389.0" y="393.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sq_boss_no" id="BPMNEdge_sq_boss_no">
+        <omgdi:waypoint x="327.0" y="510.0"></omgdi:waypoint>
+        <omgdi:waypoint x="467.0" y="509.0"></omgdi:waypoint>
+        <omgdi:waypoint x="467.0" y="147.0"></omgdi:waypoint>
+        <omgdi:waypoint x="360.0" y="147.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="48.0" width="72.0" x="439.0" y="431.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sq_cmt_after" id="BPMNEdge_sq_cmt_after">
+        <omgdi:waypoint x="307.0" y="175.0"></omgdi:waypoint>
+        <omgdi:waypoint x="307.0" y="200.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sq_to_dept" id="BPMNEdge_sq_to_dept">
+        <omgdi:waypoint x="307.0" y="240.0"></omgdi:waypoint>
+        <omgdi:waypoint x="307.0" y="263.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sq_cancel" id="BPMNEdge_sq_cancel">
+        <omgdi:waypoint x="287.0" y="220.0"></omgdi:waypoint>
+        <omgdi:waypoint x="219.0" y="220.0"></omgdi:waypoint>
+        <omgdi:waypoint x="219.0" y="400.0"></omgdi:waypoint>
+        <omgdi:waypoint x="219.0" y="577.0"></omgdi:waypoint>
+        <omgdi:waypoint x="290.0" y="577.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

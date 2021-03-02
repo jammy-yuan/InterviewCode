@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping 
+	SYSTEM "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+	
+<hibernate-mapping>
+	<!-- {ps} Project 类的映射设置 -->
+	<class name="com.gec.po.Project" table="t_project">
+		<!-- 
+			Integer id  <====>  _id (表)
+			String proName  <====>  pro_name (表)
+			String proDesc  <====>  pro_desc (表)
+			Set<Developer> developers;
+		 -->
+		<id name="id" column="_id">
+			<!-- {ps} 主键生成器 -->
+			<generator class="native" ></generator>
+		</id>
+		<property name="proName" type="java.lang.String" column="pro_name" />
+		<property name="proDesc" type="java.lang.String" column="pro_desc" />
+		
+		<!-- {设置} 
+			{ps} Set<Developer> developers 数据关联
+			难点: {1} 要设置中间表与 "本方" 的关联关系。
+			     {2} 要设置中间表与 "对方" 的关联关系。
+			     {3} 你搞清楚本方是谁, 对方是谁。
+			<set name="Set集合的变量名" table="中间表的表名">
+			<key column="中间表关联本方的键名" />
+			<many-to-many
+				class="Set集合中保存的类型"
+				column="中间表关联对方的键名" />
+			</set> 
+			
+			{ps} Set<Developer> developers 数据关联    
+		-->
+		<set name="developers" table="t_dev_pro">
+			<key column="pro_id" />
+			<many-to-many
+				class="com.gec.po.Developer"
+				column="dev_id" />
+		</set>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping 
+	SYSTEM "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+	
+<!-- 
+	(1) Integer id;
+	(2) String devName;
+	(3) Integer age;
+	(4) Set<Project> projects;
+ -->
+<hibernate-mapping>
+	<class name="com.gec.po.Developer" table="t_developer">
+		<id name="id" column="_id">
+			<!-- {ps} 主键生成器 -->
+			<generator class="native" ></generator>
+		</id>
+		<property name="devName" type="java.lang.String" column="dev_name" />
+		<property name="age" type="java.lang.Integer" column="_age" />
+
+		<!-- {ps} 多对多的关联对象
+			Set<Project> projects;
+			你们自己去补 ...
+		-->
+		
+		
+		
+	</class>
+</hibernate-mapping>

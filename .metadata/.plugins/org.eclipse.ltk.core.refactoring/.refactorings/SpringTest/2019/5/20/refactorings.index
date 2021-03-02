@@ -1,0 +1,8 @@
+1558095477890	Delete element
+1558096091423	Rename type 'UserController'
+1558096119937	Extract interface 'UserController'
+1558096150352	Rename type 'UserDao'
+1558096164409	Extract interface 'UserDao'
+1558096181899	Rename type 'UserService'
+1558096196649	Extract interface 'UserService'
+1558145362048	Delete element

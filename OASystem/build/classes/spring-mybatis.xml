@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+	<!-- {ps} 设置组件扫描地址 -->
+	<context:component-scan base-package="com.gec.service" />
+
+	<!-- (ps) 属性占位符解析器 -->
+	<context:property-placeholder
+		location="classpath:mysql.properties" />
+
+	<!-- (1) 基础数据源
+		BasicDataSource
+		b1.setUrl(url);
+		b1.setUsername(username);
+		b1.setPassword(password);
+		b1.setDriverClassName(driverClassName);
+	  -->
+	<bean id="BasicDataSource" 
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="DriverClassName" value="${jdbc.driver}" />
+		<property name="Url" value="${jdbc.url}" />
+		<property name="Username" value="${jdbc.username}" />
+		<property name="Password" value="${jdbc.password}" />
+	</bean>
+	
+	<!-- (2) Sql会话工厂Bean
+		配置以下项目 :
+		s1.setDataSource( 数据源  );
+		s1.setMapperLocations( UserMapper.xml存放的路径 );
+	 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
+		<property name="dataSource" ref="BasicDataSource" />
+		<property name="mapperLocations" value="classpath:com/gec/mappers/*.xml" />
+	</bean>
+	
+	
+	<!-- (3) 映射器扫描配置器
+		org.mybatis.spring.mapper.MapperScannerConfigurer
+		扫描动态代理接口文件, 扫到后, 根据接口的定义来产生一个代理类(动态编译生成 class),
+		反射创建代理对象, 并放入 Spring IoC 容器当中。
+		最终，被 Spring 的自动装配设置到 XxxService 的属性上。
+		
+		需要设置以下的属性:
+		m1.setBasePackage(basePackage);
+		
+		{ps} 有两个方法可以绑定会话工厂
+		m1.setSqlSessionFactory( 引用对象  ); //已过时
+		m1.setSqlSessionFactoryBeanName( BeanId );  //
+	  -->
+	<bean id="MapperScannerConfigurer" 
+		class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.gec.dao" />
+		<property name="SqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean>
+	
+	
+	<!-- (4) 数据源事务管理器
+		DataSourceTransactionManager txManager;
+		txManager.setDataSource(dataSource);
+	  -->
+	  
+	<bean id="txManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="DataSource" ref="BasicDataSource"/>
+	</bean>
+	
+	
+	<!-- (5) 事务增强  -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="del*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="save*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+		
+	<!-- (6) 事务切面，切点  -->
+	<aop:config>
+		<aop:pointcut id="txPointCut"
+			expression="execution(* com.gec.service.*.*(..))" />
+		<aop:advisor 
+			advice-ref="txAdvice"
+			pointcut-ref="txPointCut" />
+	</aop:config>
+	
+	
+	
+
+
+</beans>

@@ -1,0 +1,8 @@
+#Tomcat publish data
+#Sat Jun 15 17:06:16 CST 2019
+org.eclipse.jst.jee.server\:/binary\:D\:\\ecliWS\\OASystem\\WebContent\\WEB-INF\\lib\\spring-web-4.2.5.RELEASE.jar=D\:\\feiq\\apache-tomcat-8.5.13\\webapps\\OASystem\\WEB-INF\\lib\\spring-web-4.2.5.RELEASE.jar
+org.eclipse.jst.jee.server\:OASystem=D\:\\feiq\\apache-tomcat-8.5.13\\webapps\\OASystem
+org.eclipse.jst.jee.server\:/binary\:D\:\\ecliWS\\ActivitiSSM2\\WebContent\\WEB-INF\\lib\\spring-web-4.2.5.RELEASE.jar=D\:\\feiq\\apache-tomcat-8.5.13\\webapps\\ActivitiSSM2\\WEB-INF\\lib\\spring-web-4.2.5.RELEASE.jar
+org.eclipse.jst.jee.server\:/binary\:D\:\\ecliWS\\ShiroSSM\\WebContent\\WEB-INF\\lib\\spring-web-4.2.5.RELEASE.jar=D\:\\feiq\\apache-tomcat-8.5.13\\webapps\\ShiroSSM\\WEB-INF\\lib\\spring-web-4.2.5.RELEASE.jar
+org.eclipse.jst.jee.server\:ActivitiSSM2=D\:\\feiq\\apache-tomcat-8.5.13\\webapps\\ActivitiSSM2
+org.eclipse.jst.jee.server\:ShiroSSM=D\:\\feiq\\apache-tomcat-8.5.13\\webapps\\ShiroSSM

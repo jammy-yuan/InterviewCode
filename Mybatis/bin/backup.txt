@@ -1,0 +1,18 @@
+<configuration>
+	<properties resource="mysql.properties"/>
+	<environments default="mybatis">
+		<environment id="mybatis">
+			<!-- JDBC事务管理器 -->
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driverName}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.username}"/>
+				<property name="password" value="${jdbc.password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/gec/domain/UserMapper.xml"/>
+	</mappers>
+</configuration>

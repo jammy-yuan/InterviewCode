@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping 
+	SYSTEM "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+	
+<!--  
+	当前文件是一个对象关系映射配置文件
+	主要是用来设置: PO 对象 ===> 关系表(映 射)	
+	
+	package="com.gec.po"
+-->
+<hibernate-mapping>
+	<!-- 这一个映射文件，可以映射多个类, 多个表的关系
+		ps: 
+		name="Java对象的全路径" table="表名称"
+	 -->
+	<class name="com.gec.po.User" table="t_user">
+		<!-- 
+			<id name="属性名称" column="列名">
+		 -->
+		<id name="id" column="_id">
+			<!-- {ps} 主键生成器 -->
+			<generator class="native" >
+			</generator>
+		</id>
+		<!-- 
+			private String userName;
+			private String passWord;
+			private Integer age;
+			private Float weight;
+			
+			type="java.lang.String" (可省略)
+			name="userName"   假如 ： 列名与属性名不一致 (不能省略)
+			column=""         假如 ： 列名与属性名不一致 (不能省略)
+		 -->
+		<property name="userName" column="user_name" type="java.lang.String"/>
+		<property name="passWord" column="pass_word" type="java.lang.String"/>
+		<property name="age" column="_age" type="java.lang.Integer"/>
+		<property name="weight" column="_weight" type="java.lang.Float"/>
+
+	</class>
+
+</hibernate-mapping>

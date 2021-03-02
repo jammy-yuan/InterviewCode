@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd" >
+	
+	<!-- 
+		{ps} 设置组件扫描功能
+		容器启动时, 会根据你设置的路径， 来扫描包下的类。 
+		按照注解对应的功能，启用它的配置。
+		
+		{ps} 也会扫描它的子包。
+		base-package="com.gec.controller"
+	 -->
+	 
+	<context:component-scan base-package="com.gec.controller" />
+	<context:component-scan base-package="com.gec.service" />
+	<context:component-scan base-package="com.gec.dao" />
+	
+	
+	
+</beans>
+
+
+
+

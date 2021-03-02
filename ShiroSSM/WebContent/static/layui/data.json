@@ -1,0 +1,10 @@
+{
+	"code":0,
+	"msg":"",
+	"count":50,
+	"data":[
+		{"id":10000,"account":"candy","username":"用户名","sex":"女","age":"10"},
+		{"id":10000,"account":"candy","username":"用户名","sex":"女","age":"10"},
+		{"id":10000,"account":"candy","username":"用户名","sex":"女","age":"10"}
+	]
+}

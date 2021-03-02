@@ -1,0 +1,61 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- 
+			{ps} 数据库连接的 4 个基本参 ... 
+			找到设置的格式:
+				\hibernate-release-4.2.21.Final\project\etc\hibernate.properties
+				## MySQL
+				dialect: 数据库的方言设置
+				方言: 地方的语言
+				hibernate.dialect(属性名)
+					=== org.hibernate.dialect.MySQLDialect(属性值)
+				
+				#hibernate.dialect org.hibernate.dialect.MySQLInnoDBDialect
+				#hibernate.dialect org.hibernate.dialect.MySQLMyISAMDialect
+				
+				#hibernate.connection.driver_class     com.mysql.jdbc.Driver
+				#hibernate.connection.url    jdbc:mysql:///test
+				#hibernate.connection.username    gavin
+				#hibernate.connection.password
+		 -->
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		<property name="hibernate.connection.url">
+			jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8
+		</property>
+		<property name="hibernate.connection.username">
+			root
+		</property>
+		<property name="hibernate.connection.password">root</property>
+		
+		<!-- {ps} 显示 sql 语句
+			方便我们测试。
+		 -->
+		<property name="show_sql">true</property>
+		
+		<!-- {ps} 是否格式化输出 sql 语句。
+			方便我们测试。
+		 -->
+		<property name="format_sql">true</property>
+
+		<!-- 告诉 hibernate 有没有什么 配置文件， 需要加载的.
+			{1} User.hbm.xml (对象关系配置文件)
+		 -->
+		<mapping resource="com/gec/po/User.hbm.xml" />
+		<mapping resource="com/gec/po/Dept.hbm.xml" />
+		<mapping resource="com/gec/po/Employee.hbm.xml" />
+		
+		<mapping resource="com/gec/po/Person.hbm.xml" />
+		<mapping resource="com/gec/po/IdCard.hbm.xml" />
+		
+		
+	</session-factory>
+</hibernate-configuration>

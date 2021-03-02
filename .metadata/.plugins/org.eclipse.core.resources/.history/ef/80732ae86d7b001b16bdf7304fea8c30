@@ -1,0 +1,24 @@
+package com.test.it.interviewcoding;
+
+import java.util.List;
+
+public class Combine {
+	
+	private static final String[][] LETTERS = {{"a","b","c"},{"d","e","f"},
+			{"g","h","i"},{"j","k","l"},{"m","n","o"},
+			{"p","q","r","s"},{"t","u","v"},{"w","x","y","z"}};
+	
+	public static void findCombination(List<Integer> digits, int index, String s, List<String> arr) {
+	    if (index == digits.size()) {
+	    	arr.add(s);
+	      return;
+	    }
+	    
+	    int num = digits.get(index);
+	    String[] letters = LETTERS[num -2];
+	    for (int i = 0; i < letters.length; i++) {
+	    	findCombination(digits, index + 1, s + letters[i], arr);
+	    }
+	}
+	
+}

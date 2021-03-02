@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gec.dao.MenuMapper">
+	
+	<!-- {ps} Set<Menu> getAllMenus();
+	    +========================================+
+		| id   | parentId | parIds  | menuName   |
+		| note | mapping  | visible | permission |
+		+========================================+
+	  -->
+
+	<select id="getAllMenus" resultType="com.gec.domain.Menu">
+		select * from menu
+	</select>
+	
+	
+	
+
+</mapper>

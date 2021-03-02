@@ -1,0 +1,40 @@
+package com.test.it.interviewcoding;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class A {
+	
+//	private int[] numbers = {2,3,4,5,6,7,8,9};
+	
+	private static final String[][] LETTERS = {{"a","b","c"},{"d","e","f"},
+			{"g","h","i"},{"j","k","l"},{"m","n","o"},
+			{"p","q","r","s"},{"t","u","v"},{"w","x","y","z"}};
+	
+	public static List<StringBuilder> buildResult(int[] numbers, List<StringBuilder> arr) {
+		for (int num : numbers) {
+			forloopMethod(num, arr);
+		}
+		return arr;
+	}
+	
+	private static List<StringBuilder> forloopMethod(int num, List<StringBuilder> arr) {
+		for (String str : LETTERS[num - 2]) {
+			if (arr.size() < LETTERS[num - 2].length) {
+				StringBuilder sb = new StringBuilder();
+				sb.append(str);
+				arr.add(sb);
+			} else {
+				List<StringBuilder> arr2 = new ArrayList();
+				StringBuilder sb = new StringBuilder();
+				for (String strb : LETTERS[num - 2]) {
+					arr2.add(sb.append(strb));
+				}
+				arr.clear();
+				arr.addAll(arr2);
+			}
+		}
+		return arr;
+	}
+	
+}

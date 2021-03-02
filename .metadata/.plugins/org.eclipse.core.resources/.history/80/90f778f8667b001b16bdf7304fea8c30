@@ -1,0 +1,20 @@
+package com.test.it.interviewcoding;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	List<StringBuilder> arr = new ArrayList();
+        List<StringBuilder> result = A.buildResult(new int[]{2,3}, arr);
+        for (StringBuilder sb : result) {
+			System.out.print(sb.toString() + " ");
+		}
+    }
+}

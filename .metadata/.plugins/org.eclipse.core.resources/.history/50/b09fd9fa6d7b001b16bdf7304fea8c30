@@ -1,0 +1,24 @@
+package com.test.it.interviewcoding;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest {
+	
+	@Test
+    public void testMethod() {
+		List<Integer> digits = new ArrayList<Integer>();
+		digits.add(0);
+		digits.add(5);
+		digits.add(9);
+		digits.add(10);
+		List<String> arr = new ArrayList<String>();
+		Combine.findCombination(digits, 0, "", arr);
+    }
+
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 
+<bean id="user" class="cn.yueqian.bean.User">
+        <property name="name">
+    <value>aaa</value>
+    </property>
+    <property name="sex">
+    <value>女</value>
+    </property>
+    <property name="age">
+    <value>18</value>
+    </property>
+    <property name="password">
+    <value>aaa123</value>
+    </property>
+    </bean>
+<bean id="dao" class="cn.yueqian.dao.Dao">
+</bean>    
+<bean id="service" class="cn.yueqian.service.Service">
+    <property name="dao" ref="dao">
+    </property>
+</bean>  
+<bean id="controller" class="cn.yueqian.controller.Controller">
+    <property name="service" ref="service">
+    </property>
+</bean>
+ -->
+     
+
+<bean class="cn.yueqian.bean.User" id="user">
+	<constructor-arg index="1">
+		<value>andy</value>
+	</constructor-arg>
+	<constructor-arg index="2">
+		<value>123</value>
+	</constructor-arg>
+</bean> 
+    <!-- more bean definitions go here -->
+
+</beans>

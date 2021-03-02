@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+     
+    <!-- {ps} 配置一个流程引擎的配置器, Spring 一启动就会创建这对象 -->   
+	<bean id="processEngineConfiguration" 
+	  class="org.activiti.spring.SpringProcessEngineConfiguration" >
+	   <!-- 
+	   		x1.setDataSource( 数据源 );
+	   		这是是引用 spring-mybatis.xml 中配置的数据源
+	    -->
+	  <property name="dataSource" ref="BasicDataSource" />
+	  <!-- 
+	   		x1.setTransactionManager( 事务管理器  );
+	   		这里是引用 spring-mybatis.xml 中配置的数据源
+	  -->
+	  <property name="TransactionManager" ref="txManager" />
+	  
+	  <!-- 
+	  		设置在 Activiti 创建数据表时, 所用的创表策略..
+	  		x1.setDatabaseSchemaUpdate( 创建表更新策略 )
+	    -->
+	  <property name="databaseSchemaUpdate" value="false" />
+	  
+	  <!--  x1.setHistory( full );  //所有信息都归档保存 -->
+	  <property  name="history"  value="full" />
+	  
+	  <property name="activityFontName"  value="宋体" />
+	  <property name="labelFontName"     value="宋体" />
+	</bean>
+	
+	 <!-- {ps} 配置一个流程引擎
+		需要绑定: ===> 流程引擎的配置器
+		x2.setProcessEngineConfiguration( 引用对象  );
+	 -->
+	 <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+	 	<property name="processEngineConfiguration" ref="processEngineConfiguration" />
+	 </bean>
+	 
+	 <!-- {ps} 让 Spring 帮我们创建各个服务类   -->
+	 
+	 <!-- {ps} 用来布署流程, 保存 定义 的服务
+		pe.getRepositoryService();
+		因为我们在工作流中使用到所有服务, 都是从引擎那里获得。
+		factory-bean="processEngine" 
+	 -->
+	 <bean id="repositoryService" factory-bean="processEngine" 
+	 	factory-method="getRepositoryService" >
+	 </bean>
+	 
+	 <!-- {ps} 与流程运行时相关的服务, 可获取运行时的状态。
+		  pe.getRuntimeService(); -->
+	 <bean id="runtimeService" factory-bean="processEngine" 
+	 	factory-method="getRuntimeService" >
+	 </bean>
+	 
+	 <!-- 
+	 	{ps} 获取流程执行中的任务信息, 办理任务。
+		pe.getTaskService();
+	  -->
+	  <bean id="taskService" factory-bean="processEngine" 
+	 	factory-method="getTaskService" >
+	 </bean>
+	 
+	 <!-- 
+		{ps} 获取历史相关信息, 可以获取活动历史, 任务历史。
+		pe.getHistoryService();
+	  -->
+	 <bean id="historyService" factory-bean="processEngine" 
+		 	factory-method="getHistoryService" >
+	 </bean>
+        
+</beans>

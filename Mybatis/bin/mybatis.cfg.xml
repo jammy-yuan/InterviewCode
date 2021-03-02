@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<properties resource="mysql.properties"></properties>
+	<!-- 扫描指定的包，自动产生别名 -->
+	<typeAliases>
+		<package name="com.gec.domain"/>
+	</typeAliases>
+	<environments default="mybatis">
+		<environment id="mybatis">
+			<!-- {ps} 事务管理器 -->			
+			<transactionManager type="JDBC"></transactionManager>
+			<!-- {ps} 数据源
+				我要使用数据库的连接池, 如果使用了连接池, 连接就交给连接池来管理
+			  -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driverName}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.username}"/>
+				<property name="password" value="${jdbc.password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<!-- 
+			<mapper resource="com/gec/mapper/UserMapper.xml"/>
+			<package name="com.gec.mapper"/>
+			
+		 -->
+		<mapper class="com.gec.mapper.UserMapper"/>
+		<mapper class="com.gec.mapper.SquadMapper"/>
+		<mapper class="com.gec.mapper.StudentMapper"/>
+		<mapper class="com.gec.mapper.CourseMapper"/>
+	</mappers>
+
+</configuration>
+
+	
+	

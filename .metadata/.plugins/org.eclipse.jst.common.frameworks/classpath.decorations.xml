@@ -1,0 +1,7 @@
+<classpath>
+  <container id="ActivitiSSM2!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/spring-context-4.2.5.RELEASE.jar">
+      <source-attachment-path>D:/maven/repository/org/springframework/spring-context/4.2.5.RELEASE/spring-context-4.2.5.RELEASE-sources.jar</source-attachment-path>
+    </entry>
+  </container>
+</classpath>

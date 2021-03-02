@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping 
+	SYSTEM "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+	
+<!--  
+	当前文件是一个对象关系映射配置文件
+	主要是用来设置: PO 对象 ===> 关系表(映 射)	
+-->
+<hibernate-mapping>
+	<!-- {ps} Employee 类 -->
+	<class name="com.gec.po.Employee" table="t_employee">
+		<id name="id" column="_id">
+			<!-- {ps} 主键生成器 -->
+			<generator class="native" ></generator>
+		</id>
+		<property name="empName" column="emp_name" />
+		
+		<!-- {ps} 实际上是设置   Dept 对象映射关系 ... 
+			格式设置: 
+			<many-to-one 
+				name="属性名"
+				column="外键列名"
+				class="关联对象的类路径" >
+			对应的属性:
+			private Dept dept;  //{ps} 这是一个关联对象
+			对方是: Dept
+		 -->
+		 
+		<many-to-one 
+			name="dept"
+			column="dept_id"
+			class="com.gec.po.Dept" >
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/tomcat-i18n-fr.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/spring-core-4.2.5.RELEASE.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/catalina-ha.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/tomcat-coyote.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/tomcat-websocket.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/tomcat-i18n-ja.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/aspectjweaver-1.8.7.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/jaspic-api.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/mybatis-spring-1.3.2.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/activiti-bpmn-converter-5.13.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/juel-api-2.2.2.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/tomcat-util.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/tomcat-jni.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/el-api.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/jsp-api.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/websocket-api.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/activiti-bpmn-layout-5.13.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/aopalliance-1.0.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/spring-expression-4.2.5.RELEASE.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/spring-web-4.2.5.RELEASE.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/mybatis-3.4.6.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/catalina-ant.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/spring-webmvc-4.2.5.RELEASE.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-spring-webmvc-4.2.5.RELEASE.jar/meta-inf/spring-form.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-spring-webmvc-4.2.5.RELEASE.jar/meta-inf/spring.tld" project="ActivitiSSM2"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/tomcat-api.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/jasper-el.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/annotations-api.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/catalina-storeconfig.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/activiti-simple-workflow-5.13.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/tomcat-i18n-es.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/jackson-annotations-2.3.5.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/mysql-connector-java-5.1.30-bin.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/spring-aspects-4.2.5.RELEASE.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/spring-jdbc-4.2.5.RELEASE.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/activiti-engine-5.13.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/jackson-core-2.3.5.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/catalina-tribes.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/juel-impl-2.2.2.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/jasper.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/spring-context-4.2.5.RELEASE.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/joda-time-2.7.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/commons-logging-1.2.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/log4j-1.2.13.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/commons-pool-1.3.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/tomcat-jdbc.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/spring-beans-4.2.5.RELEASE.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/jstl-1.2.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c-1_0-rt.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c-1_0.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt-1_0-rt.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt-1_0.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fn.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/permittedtaglibs.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/scriptfree.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql-1_0-rt.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql-1_0.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x-1_0-rt.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x-1_0.tld" project="ActivitiSSM2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x.tld" project="ActivitiSSM2"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/commons-lang-2.4.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/ecj-4.6.1.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/tomcat-dbcp.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/spring-tx-4.2.5.RELEASE.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/slf4j-api-1.7.5.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/catalina.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/activiti-spring-5.13.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/activiti-json-converter-5.13.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/spring-aop-4.2.5.RELEASE.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/activiti-bpmn-model-5.13.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/servlet-api.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/jackson-databind-2.3.5.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/slf4j-log4j12-1.7.5.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/commons-dbcp-1.3.jar"/>
+  <path value="D:/ecliWS/ActivitiSSM2/WebContent/WEB-INF/lib/activiti-common-rest-5.13.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/tomcat-util-scan.jar"/>
+  <path value="D:/feiq/apache-tomcat-8.5.13/lib/jstl.jar"/>
+ </paths>
+ <validation>
+  <el>
+   <linked-el length="37" name="%0" offset="682" path="%1"/>
+   <linked-el length="232" name="%2" offset="4222" path="%1"/>
+   <linked-el length="47" name="%2" offset="5201" path="%1"/>
+   <linked-el length="19" name="%3" offset="1717" path="%4"/>
+   <linked-el length="64" name="%5" offset="2286" path="%1"/>
+   <linked-el length="64" name="%5" offset="1100" path="%1"/>
+   <linked-el length="83" name="%5" offset="2410" path="%1"/>
+   <linked-el length="112" name="%5" offset="2554" path="%1"/>
+   <linked-el length="83" name="%5" offset="1224" path="%1"/>
+   <linked-el length="112" name="%5" offset="1368" path="%1"/>
+   <linked-el length="66" name="%5" offset="2724" path="%1"/>
+   <linked-el length="66" name="%5" offset="1538" path="%1"/>
+   <linked-el length="16" name="%6" offset="374" path="%7"/>
+   <linked-el length="36" name="%8" offset="185" path="%7"/>
+   <linked-el length="36" name="%8" offset="185" path="%9"/>
+   <linked-el length="36" name="%8" offset="185" path="%10"/>
+   <linked-el length="36" name="%8" offset="185" path="%11"/>
+   <linked-el length="36" name="%8" offset="185" path="%12"/>
+   <linked-el length="36" name="%8" offset="185" path="%13"/>
+   <linked-el length="112" name="%14" offset="2554" path="%1"/>
+   <linked-el length="112" name="%14" offset="1368" path="%1"/>
+   <linked-el length="19" name="%15" offset="1717" path="%4"/>
+   <linked-el length="17" name="%15" offset="1558" path="%4"/>
+   <linked-el length="14" name="%15" offset="1608" path="%4"/>
+   <linked-el length="19" name="%15" offset="1660" path="%4"/>
+   <linked-el length="14" name="%16" offset="1608" path="%4"/>
+   <linked-el length="66" name="%17" offset="6023" path="%1"/>
+   <linked-el length="275" name="%17" offset="6481" path="%1"/>
+   <linked-el length="36" name="%18" offset="185" path="%7"/>
+   <linked-el length="36" name="%18" offset="185" path="%9"/>
+   <linked-el length="36" name="%18" offset="185" path="%10"/>
+   <linked-el length="36" name="%18" offset="185" path="%11"/>
+   <linked-el length="36" name="%18" offset="185" path="%12"/>
+   <linked-el length="36" name="%18" offset="185" path="%13"/>
+   <linked-el length="64" name="%19" offset="2286" path="%1"/>
+   <linked-el length="64" name="%19" offset="1100" path="%1"/>
+   <linked-el length="83" name="%19" offset="2410" path="%1"/>
+   <linked-el length="112" name="%19" offset="2554" path="%1"/>
+   <linked-el length="83" name="%19" offset="1224" path="%1"/>
+   <linked-el length="112" name="%19" offset="1368" path="%1"/>
+   <linked-el length="66" name="%19" offset="2724" path="%1"/>
+   <linked-el length="66" name="%19" offset="1538" path="%1"/>
+   <linked-el length="22" name="%20" offset="319" path="%13"/>
+   <linked-el length="31" name="%20" offset="479" path="%13"/>
+   <linked-el length="48" name="%20" offset="1288" path="%11"/>
+   <linked-el length="26" name="%20" offset="693" path="%10"/>
+   <linked-el length="31" name="%20" offset="450" path="%9"/>
+   <linked-el length="24" name="%20" offset="326" path="%12"/>
+   <linked-el length="49" name="%20" offset="527" path="%9"/>
+   <linked-el length="29" name="%20" offset="901" path="%9"/>
+   <linked-el length="48" name="%20" offset="1185" path="%11"/>
+   <linked-el length="59" name="%21" offset="6234" path="%1"/>
+   <linked-el length="66" name="%21" offset="6023" path="%1"/>
+   <linked-el length="66" name="%21" offset="5909" path="%1"/>
+   <linked-el length="56" name="%21" offset="6132" path="%1"/>
+   <linked-el length="275" name="%21" offset="6481" path="%1"/>
+   <linked-el length="54" name="%21" offset="5807" path="%1"/>
+   <linked-el length="232" name="%22" offset="4222" path="%1"/>
+   <linked-el length="66" name="%22" offset="3881" path="%1"/>
+   <linked-el length="41" name="%22" offset="5031" path="%1"/>
+   <linked-el length="59" name="%22" offset="3743" path="%1"/>
+   <linked-el length="25" name="%23" offset="1132" path="%11"/>
+   <linked-el length="36" name="%24" offset="185" path="%7"/>
+   <linked-el length="36" name="%24" offset="185" path="%9"/>
+   <linked-el length="36" name="%24" offset="185" path="%10"/>
+   <linked-el length="36" name="%24" offset="185" path="%11"/>
+   <linked-el length="36" name="%24" offset="185" path="%12"/>
+   <linked-el length="36" name="%24" offset="185" path="%13"/>
+   <linked-el length="39" name="%25" offset="3535" path="%1"/>
+   <linked-el length="56" name="%26" offset="6132" path="%1"/>
+   <linked-el length="275" name="%26" offset="6481" path="%1"/>
+   <linked-el length="17" name="%27" offset="1558" path="%4"/>
+   <linked-el length="53" name="%28" offset="2877" path="%1"/>
+   <linked-el length="53" name="%28" offset="1691" path="%1"/>
+   <linked-el length="16" name="%29" offset="374" path="%7"/>
+   <linked-el length="59" name="%30" offset="6234" path="%1"/>
+   <linked-el length="275" name="%30" offset="6481" path="%1"/>
+   <linked-el length="19" name="%31" offset="1660" path="%4"/>
+   <linked-el length="13" name="%32" offset="859" path="%10"/>
+   <linked-el length="10" name="%32" offset="830" path="%11"/>
+   <linked-el length="49" name="%32" offset="527" path="%9"/>
+   <linked-el length="66" name="%33" offset="5909" path="%1"/>
+   <linked-el length="275" name="%33" offset="6481" path="%1"/>
+   <linked-el length="16" name="%34" offset="364" path="%9"/>
+   <linked-el length="232" name="%35" offset="4222" path="%1"/>
+   <linked-el length="42" name="%35" offset="5365" path="%1"/>
+   <linked-el length="232" name="%36" offset="4222" path="%1"/>
+   <linked-el length="47" name="%36" offset="5113" path="%1"/>
+   <linked-el length="10" name="%37" offset="1008" path="%11"/>
+   <linked-el length="275" name="%38" offset="6481" path="%1"/>
+   <linked-el length="54" name="%38" offset="5807" path="%1"/>
+   <linked-el length="83" name="%39" offset="2410" path="%1"/>
+   <linked-el length="112" name="%39" offset="2554" path="%1"/>
+   <linked-el length="83" name="%39" offset="1224" path="%1"/>
+   <linked-el length="112" name="%39" offset="1368" path="%1"/>
+   <linked-el length="25" name="%40" offset="1132" path="%11"/>
+   <linked-el length="48" name="%40" offset="1288" path="%11"/>
+   <linked-el length="10" name="%40" offset="1046" path="%11"/>
+   <linked-el length="48" name="%40" offset="1185" path="%11"/>
+   <linked-el length="48" name="%41" offset="1288" path="%11"/>
+   <linked-el length="10" name="%41" offset="1046" path="%11"/>
+   <linked-el length="48" name="%41" offset="1185" path="%11"/>
+   <linked-el length="16" name="%42" offset="331" path="%9"/>
+   <linked-el length="16" name="%42" offset="852" path="%11"/>
+   <linked-el length="13" name="%43" offset="859" path="%10"/>
+   <linked-el length="10" name="%43" offset="830" path="%11"/>
+   <linked-el length="16" name="%43" offset="331" path="%9"/>
+   <linked-el length="16" name="%43" offset="364" path="%9"/>
+   <linked-el length="16" name="%43" offset="852" path="%11"/>
+   <linked-el length="49" name="%43" offset="527" path="%9"/>
+   <linked-el length="232" name="%44" offset="4222" path="%1"/>
+   <linked-el length="42" name="%44" offset="5284" path="%1"/>
+  </el>
+ </validation>
+ <aliases>
+  <alias path="xx" value="%0"/>
+  <alias path="passWord" value="%2"/>
+  <alias path="jdbc.password" value="%3"/>
+  <alias path="criterion" value="%5"/>
+  <alias path="instance" value="%6"/>
+  <alias path="pageContext.request" value="%8"/>
+  <alias path="criterion.secondValue" value="%14"/>
+  <alias path="jdbc" value="%15"/>
+  <alias path="jdbc.url" value="%16"/>
+  <alias path="record.passWord" value="%17"/>
+  <alias path="pageContext" value="%18"/>
+  <alias path="criterion.condition" value="%19"/>
+  <alias path="ctxPath" value="%20"/>
+  <alias path="record" value="%21"/>
+  <alias path="/ActivitiSSM2/WebContent/login.jsp" value="%12"/>
+  <alias path="/ActivitiSSM2/WebContent/index.jsp" value="%13"/>
+  <alias path="/ActivitiSSM2/WebContent/WEB-INF/jsp/leaveInfo.jsp" value="%7"/>
+  <alias path="id" value="%22"/>
+  <alias path="task.processInstanceId" value="%23"/>
+  <alias path="pageContext.request.contextPath" value="%24"/>
+  <alias path="orderByClause" value="%25"/>
+  <alias path="record.age" value="%26"/>
+  <alias path="/ActivitiSSM2/WebContent/WEB-INF/jsp/queryMyTask.jsp" value="%11"/>
+  <alias path="jdbc.driver" value="%27"/>
+  <alias path="listItem" value="%28"/>
+  <alias path="instance.id" value="%29"/>
+  <alias path="/ActivitiSSM2/resource/spring-mybatis.xml" value="%4"/>
+  <alias path="record.weight" value="%30"/>
+  <alias path="/ActivitiSSM2/WebContent/WEB-INF/jsp/index.jsp" value="%9"/>
+  <alias path="/ActivitiSSM2/WebContent/WEB-INF/jsp/showLeaveBill.jsp" value="%10"/>
+  <alias path="jdbc.username" value="%31"/>
+  <alias path="user.id" value="%32"/>
+  <alias path="record.userName" value="%33"/>
+  <alias path="user.roleName" value="%34"/>
+  <alias path="weight" value="%35"/>
+  <alias path="userName" value="%36"/>
+  <alias path="list" value="%37"/>
+  <alias path="record.id" value="%38"/>
+  <alias path="criterion.value" value="%39"/>
+  <alias path="task" value="%40"/>
+  <alias path="/ActivitiSSM2/src/com/gec/mappers/UserMapper.xml" value="%1"/>
+  <alias path="task.id" value="%41"/>
+  <alias path="user.userName" value="%42"/>
+  <alias path="user" value="%43"/>
+  <alias path="age" value="%44"/>
+ </aliases>
+ <includes/>
+ <uris>
+  <uri value="http://java.sun.com/jsp/jstl/core">
+   <prefix>c</prefix>
+  </uri>
+ </uris>
+</kb-project>

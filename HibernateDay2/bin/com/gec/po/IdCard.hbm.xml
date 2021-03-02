@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping 
+	SYSTEM "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+	
+<!--  
+	当前文件是一个对象关系映射配置文件
+	主要是用来设置: PO 对象 ===> 关系表(映 射)	
+-->
+<hibernate-mapping>
+	<class name="com.gec.po.IdCard" table="t_idcard">
+		<!-- {ps} private Integer id;  -->
+		<id name="id" column="id">
+			<!-- {ps} 主键生成器    -->
+			<generator class="native" ></generator>
+		</id>
+		<!--
+			private String descript;
+			内容描述。
+		 -->
+		<property name="descript" column="descript" />
+		
+		<!-- 
+			private Person person;
+			对方是一个 Person 对象
+		-->
+		<one-to-one name="person" class="com.gec.po.Person">
+		</one-to-one>
+		
+	</class>
+</hibernate-mapping>
